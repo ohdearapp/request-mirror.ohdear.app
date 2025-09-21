@@ -296,6 +296,10 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/xml</div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple XML document</div>
                             </div>
+                            <div class="py-2">
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/gzip</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns gzip-compressed JSON data</div>
+                            </div>
                         </div>
                     </div>
                 </div>
