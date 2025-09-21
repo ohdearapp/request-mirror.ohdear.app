@@ -10,7 +10,7 @@
                 </h1>
                 <div class="max-w-4xl mx-auto mt-6 lg:mt-8">
                     <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                        A simple, free HTTP request testing tool. Send a request, and Request Mirror will respond with JSON containing all properties of the original request.
+                        Send a request, and Request Mirror will respond instantly with JSON containing all properties of the original request. Perfect for API development, webhook testing, and learning HTTP.
                     </p>
                 </div>
             </header>
@@ -149,27 +149,106 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Response Details</h3>
+                        <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Response Keys</h3>
                         <div class="space-y-4">
-                            <div class="py-2">
-                                <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Complete request data</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Headers, body, query params</div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">method</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">HTTP method used</p>
+                                </div>
                             </div>
-                            <div class="py-2">
-                                <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">JSON format</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Clean, readable responses</div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">url</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Full request URL</p>
+                                </div>
                             </div>
-                            <div class="py-2">
-                                <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Origin tracking</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">IP address and user agent</div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 01-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"/>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">args</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Query string parameters</p>
+                                </div>
                             </div>
-                            <div class="py-2">
-                                <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">File uploads</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Multipart form support</div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">data</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Raw body content</p>
+                                </div>
                             </div>
-                            <div class="py-2">
-                                <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">URL reconstruction</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Full request URL included</div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">headers</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">All HTTP headers</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z"/>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">json</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Parsed JSON payload</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">form</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Form data fields</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">files</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Uploaded files info</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 919-9"></path>
+                                    </svg>
+                                </span>
+                                <div class="flex-1">
+                                    <code class="text-sm font-mono text-primary dark:text-primary/90">origin</code>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Client IP address</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -234,13 +313,13 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                             <div class="text-xs text-gray-400 font-mono">JSON Response</div>
                         </div>
                         <pre class="text-sm text-gray-300 overflow-x-auto"><code class="language-json">{
+  <span class="text-blue-400">"method"</span>: <span class="text-green-400">"POST"</span>,
+  <span class="text-blue-400">"url"</span>: <span class="text-green-400">"{{ url('/post') }}"</span>,
   <span class="text-blue-400">"args"</span>: {
     <span class="text-blue-400">"param1"</span>: <span class="text-green-400">"value1"</span>,
     <span class="text-blue-400">"param2"</span>: <span class="text-green-400">"value2"</span>
   },
   <span class="text-blue-400">"data"</span>: <span class="text-green-400">""</span>,
-  <span class="text-blue-400">"files"</span>: {},
-  <span class="text-blue-400">"form"</span>: {},
   <span class="text-blue-400">"headers"</span>: {
     <span class="text-blue-400">"Accept"</span>: <span class="text-green-400">"*/*"</span>,
     <span class="text-blue-400">"Content-Type"</span>: <span class="text-green-400">"application/json"</span>,
@@ -250,9 +329,9 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
   <span class="text-blue-400">"json"</span>: {
     <span class="text-blue-400">"key"</span>: <span class="text-green-400">"value"</span>
   },
-  <span class="text-blue-400">"method"</span>: <span class="text-green-400">"POST"</span>,
-  <span class="text-blue-400">"origin"</span>: <span class="text-green-400">"127.0.0.1"</span>,
-  <span class="text-blue-400">"url"</span>: <span class="text-green-400">"{{ url('/post') }}"</span>
+  <span class="text-blue-400">"form"</span>: {},
+  <span class="text-blue-400">"files"</span>: {},
+  <span class="text-blue-400">"origin"</span>: <span class="text-green-400">"127.0.0.1"</span>
 }</code></pre>
                     </div>
                 </div>

@@ -12,15 +12,15 @@ trait RequestMirrorTrait
         $json = $this->parseJsonData($request);
 
         $response = [
+            'method' => $request->method(),
+            'url' => $request->fullUrl(),
             'args' => $request->query(),
             'data' => $this->getDataContent($request),
-            'files' => [],
-            'form' => $request->isJson() ? [] : $request->except('_token'),
             'headers' => $this->formatHeaders($request),
             'json' => $json,
-            'method' => $request->method(),
+            'form' => $request->isJson() ? [] : $request->except('_token'),
+            'files' => [],
             'origin' => $request->ip(),
-            'url' => $request->fullUrl(),
         ];
 
         return response()->json(array_merge($response, $additional));
