@@ -123,7 +123,6 @@ php artisan migrate --force;
 {{ logMessage("🙏  Blessing new release…") }}
 ln -nfs {{ $newReleaseDir }} {{ $currentDir }};
 cd {{ $newReleaseDir }}
-php artisan horizon:terminate
 php artisan config:clear
 php artisan view:clear
 php artisan cache:clear
@@ -132,10 +131,7 @@ php artisan route:clear
 php artisan route:cache
 php artisan event:cache
 
-sudo service php8.2-fpm restart
-sudo supervisorctl restart all
-php artisan schedule:sync
-php artisan health:check
+sudo service php8.4-fpm restart
 @endtask
 
 @task('cleanOldReleases', ['on' => 'remote'])
