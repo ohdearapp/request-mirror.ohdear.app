@@ -1,7 +1,7 @@
 @setup
 $branch = 'main';
 $server = "request-mirror.ohdear.app";
-$server = "138.68.76.137";
+$server = "164.92.235.117";
 $userAndServer = 'forge@'. $server;
 $repository = "ohdearapp/request-mirror.ohdear.app";
 $baseDir = "/home/forge/request-mirror.ohdear.app";
