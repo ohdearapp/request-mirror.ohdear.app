@@ -81,7 +81,6 @@ ln -nfs {{ $baseDir }}/.env .env;
 
 cd {{ $newReleaseDir }};
 {{ logMessage("🚚  Running Composer…") }}
-ln -nfs {{ $baseDir }}/auth.json auth.json;
 composer install --prefer-dist --no-scripts --no-dev -q -o;
 @endtask
 
