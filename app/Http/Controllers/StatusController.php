@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Traits\RequestMirrorTrait;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class StatusController
 {
@@ -23,7 +23,7 @@ class StatusController
 
     private function parseStatusCode(string $codes): int
     {
-        $codeList = array_filter(explode(',', $codes), function($code) {
+        $codeList = array_filter(explode(',', $codes), function ($code) {
             return is_numeric(trim($code)) && trim($code) >= 100 && trim($code) <= 599;
         });
 

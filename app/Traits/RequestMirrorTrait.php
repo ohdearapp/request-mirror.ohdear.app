@@ -2,8 +2,8 @@
 
 namespace App\Traits;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 trait RequestMirrorTrait
 {
@@ -30,6 +30,7 @@ trait RequestMirrorTrait
     {
         if ($request->isJson() && $request->getContent()) {
             $decoded = json_decode($request->getContent(), true);
+
             return $decoded ?: [];
         }
 
@@ -46,7 +47,7 @@ trait RequestMirrorTrait
         // For form data, build URL-encoded string
         if ($request->isMethod('POST') || $request->isMethod('PUT') || $request->isMethod('PATCH')) {
             $data = $request->except('_token');
-            if (!empty($data)) {
+            if (! empty($data)) {
                 return http_build_query($data);
             }
         }
