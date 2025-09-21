@@ -27,7 +27,6 @@ runNpm
 generateAssets
 updateSymlinks
 optimizeInstallation
-migrateDatabase
 blessNewRelease
 cleanOldReleases
 finishDeploy
@@ -110,12 +109,6 @@ ln -nfs {{ $baseDir }}/persistent/storage storage;
 {{ logMessage("✨  Optimizing installation…") }}
 cd {{ $newReleaseDir }};
 php artisan clear-compiled;
-@endtask
-
-@task('migrateDatabase', ['on' => 'remote'])
-{{ logMessage("🙈  Migrating database…") }}
-cd {{ $newReleaseDir }};
-php artisan migrate --force;
 @endtask
 
 @task('blessNewRelease', ['on' => 'remote'])

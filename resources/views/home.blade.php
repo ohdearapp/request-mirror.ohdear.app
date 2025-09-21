@@ -63,15 +63,9 @@
                         </div>
                     </div>
 
-                    <!-- Right: Code Example with Waves -->
+                    <!-- Right: Code Example -->
                     <div class="relative">
-                        <!-- Animated Waves Behind Code Block -->
-                        <div class="absolute -bottom-8 -left-8 -right-8 h-32 overflow-hidden z-0">
-                            <div class="absolute bottom-0 h-32 w-full wave-big-1 bg-[url(/img/wave-big-1.svg)] opacity-30"></div>
-                            <div class="absolute bottom-0 h-32 w-full wave-big-2 bg-[url(/img/wave-big-2.svg)] opacity-20"></div>
-                        </div>
-
-                        <div class="bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 shadow-xl relative z-10">
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 shadow-xl">
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex space-x-2">
                                 <div class="w-3 h-3 bg-red-500 rounded-full"></div>
