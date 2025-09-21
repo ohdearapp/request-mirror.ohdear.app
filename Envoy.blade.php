@@ -85,7 +85,7 @@ composer install --prefer-dist --no-scripts --no-dev -q -o;
 @endtask
 
 @task('runNpm', ['on' => 'remote'])
-{{ logMessage("📦  Running Yarn…") }}
+{{ logMessage("📦  Running NPM…") }}
 cd {{ $newReleaseDir }};
 npm i
 @endtask

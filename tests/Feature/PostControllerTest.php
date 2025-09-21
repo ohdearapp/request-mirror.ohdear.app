@@ -113,6 +113,35 @@ it('correctly returns request headers in headers key', function () {
     expect($headers)->toHaveKey('user-agent', 'Test-Agent/1.0');
 });
 
+it('filters out Cloudflare headers from response', function () {
+    $response = $this->withHeaders([
+        'X-Custom-Header' => 'custom-value',
+        'CF-Visitor' => '{"scheme":"https"}',
+        'CF-IPCountry' => 'BE',
+        'CF-Connecting-IP' => '81.243.180.196',
+        'CDN-Loop' => 'cloudflare; loops=1',
+        'CF-Ray' => '982c31f10c65ffef-AMS',
+        'X-Forwarded-For' => '81.243.180.196',
+        'X-Forwarded-Proto' => 'https',
+        'User-Agent' => 'Test-Agent/1.0',
+    ])->post('/post');
+
+    $headers = $response->json('headers');
+
+    expect($headers)->toBeArray();
+    expect($headers)->toHaveKey('x-custom-header', 'custom-value');
+    expect($headers)->toHaveKey('user-agent', 'Test-Agent/1.0');
+
+    // Verify Cloudflare headers are filtered out
+    expect($headers)->not->toHaveKey('cf-visitor');
+    expect($headers)->not->toHaveKey('cf-ipcountry');
+    expect($headers)->not->toHaveKey('cf-connecting-ip');
+    expect($headers)->not->toHaveKey('cdn-loop');
+    expect($headers)->not->toHaveKey('cf-ray');
+    expect($headers)->not->toHaveKey('x-forwarded-for');
+    expect($headers)->not->toHaveKey('x-forwarded-proto');
+});
+
 it('correctly parses valid JSON payload in json key', function () {
     $jsonData = [
         'nested' => [

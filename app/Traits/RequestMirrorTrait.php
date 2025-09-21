@@ -57,8 +57,32 @@ trait RequestMirrorTrait
 
     protected function formatHeaders(Request $request): array
     {
-        return collect($request->headers->all())->map(function ($values) {
+        $headers = collect($request->headers->all())->map(function ($values) {
             return implode(', ', $values);
         })->toArray();
+
+        return $this->removeKeysFromArray($headers, $this->getCloudflareHeaders());
+    }
+
+    protected function removeKeysFromArray(array $array, array $keysToRemove): array
+    {
+        return collect($array)
+            ->reject(function ($value, $key) use ($keysToRemove) {
+                return in_array(strtolower($key), array_map('strtolower', $keysToRemove));
+            })
+            ->toArray();
+    }
+
+    protected function getCloudflareHeaders(): array
+    {
+        return [
+            'cf-visitor',
+            'cf-ipcountry',
+            'cf-connecting-ip',
+            'cdn-loop',
+            'cf-ray',
+            'x-forwarded-for',
+            'x-forwarded-proto',
+        ];
     }
 }
