@@ -23,11 +23,10 @@ return "echo '\033[32m" .$message. "\033[0m';\n";
 startDeployment
 cloneRepository
 runComposer
-runYarn
+runNpm
 generateAssets
 updateSymlinks
 optimizeInstallation
-backupDatabase
 migrateDatabase
 blessNewRelease
 cleanOldReleases
@@ -47,19 +46,11 @@ git pull origin {{ $branch }}
 @task('cloneRepository', ['on' => 'remote'])
 {{ logMessage("🌀  Cloning repository…") }}
 
-[ -d $releasesDir ] || mkdir $releasesDir;
-[ -d $persistentDir ] || mkdir $persistentDir;
-[ -d $persistentDir/media ] || mkdir $persistentDir/media;
-[ -d $persistentDir/storage ] || mkdir $persistentDir/storage;
-
-[ -d $persistentDir/storage/app ] || mkdir $persistentDir/storage/app;
-[ -d $persistentDir/storage/framework ] || mkdir $persistentDir/storage/framework;
-[ -d $persistentDir/storage/logs ] || mkdir $persistentDir/storage/logs;
-
-[ -d $persistentDir/storage/framework/cache ] || mkdir $persistentDir/storage/framework/cache;
-[ -d $persistentDir/storage/framework/cache/data ] || mkdir $persistentDir/storage/framework/cache/data;
-[ -d $persistentDir/storage/framework/sessions ] || mkdir $persistentDir/storage/framework/sessions;
-[ -d $persistentDir/storage/framework/views ] || mkdir $persistentDir/storage/framework/views;
+[ -d {{ $releasesDir }} ] || mkdir {{ $releasesDir }};
+[ -d {{ $persistentDir }} ] || mkdir {{ $persistentDir }};
+[ -d {{ $persistentDir }}/uploads ] || mkdir {{ $persistentDir }}/uploads;
+[ -d {{ $persistentDir }}/admin-uploads ] || mkdir {{ $persistentDir }}/admin-uploads;
+[ -d {{ $persistentDir }}/storage ] || mkdir {{ $persistentDir }}/storage;
 
 cd {{ $releasesDir }};
 
@@ -94,11 +85,10 @@ ln -nfs {{ $baseDir }}/auth.json auth.json;
 composer install --prefer-dist --no-scripts --no-dev -q -o;
 @endtask
 
-@task('runYarn', ['on' => 'remote'])
+@task('runNpm', ['on' => 'remote'])
 {{ logMessage("📦  Running Yarn…") }}
 cd {{ $newReleaseDir }};
-yarn config set ignore-engines true
-yarn
+npm i
 @endtask
 
 @task('generateAssets', ['on' => 'remote'])
@@ -121,12 +111,6 @@ ln -nfs {{ $baseDir }}/persistent/storage storage;
 {{ logMessage("✨  Optimizing installation…") }}
 cd {{ $newReleaseDir }};
 php artisan clear-compiled;
-@endtask
-
-@task('backupDatabase', ['on' => 'remote'])
-{{ logMessage("📀  Backing up database…") }}
-cd {{ $newReleaseDir }}
-php artisan backup:run
 @endtask
 
 @task('migrateDatabase', ['on' => 'remote'])
