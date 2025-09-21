@@ -57,7 +57,18 @@ trait RequestMirrorTrait
 
     protected function formatHeaders(Request $request): array
     {
-        $headers = collect($request->headers->all())->map(function ($values) {
+        /*
+         * Use getallheaders() in non-testing environments to capture headers
+         * in a case-sensitive manner, as Laravel's $request->headers
+         * normalizes header names to lowercase.
+         *
+         * getallheaders() is not available in web context, not in CLI,
+         */
+        $baseHeaders = app()->environment('testing')
+            ? $request->headers->all()
+            : getallheaders();
+
+        $headers = collect($baseHeaders)->map(function ($values) {
             return implode(', ', $values);
         })->toArray();
 
