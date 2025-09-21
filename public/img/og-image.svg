@@ -1,0 +1,20 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+
+  <!-- Main heading -->
+  <text x="600" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="500" fill="#334155">the simple</text>
+  <text x="600" y="300" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="500" fill="#ef4444">http request</text>
+  <text x="600" y="410" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="500" fill="#334155">testing tool</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="500" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="400" fill="#64748b" opacity="0.8">Send a request, and Request Mirror will respond instantly with JSON</text>
+  <text x="600" y="540" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="400" fill="#64748b" opacity="0.8">containing all properties of the original request.</text>
+</svg>

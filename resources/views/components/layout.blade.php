@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $title ?? 'Request Mirror - HTTP Testing Service by Oh Dear' }}</title>
+        @include('components.meta-tags')
 
         <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
