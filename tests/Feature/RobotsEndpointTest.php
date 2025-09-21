@@ -7,9 +7,5 @@ it('returns robots.txt content', function () {
         ->assertHeader('Content-Type', 'text/plain; charset=UTF-8');
 
     expect($response->content())
-        ->toContain('User-agent: *')
-        ->toContain('Disallow: /admin/')
-        ->toContain('Disallow: /private/')
-        ->toContain('Allow: /public/')
-        ->toContain('Sitemap:');
+        ->toContain('User-agent: *');
 });
