@@ -3,6 +3,100 @@
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
+@font-face {
+    font-family: 'Soehne';
+    src: url('/assets/fonts/soehne/soehne-buch.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Soehne';
+    src: url('/assets/fonts/soehne/soehne-halbfett.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Soehne';
+    src: url('/assets/fonts/soehne/soehne-kraftig.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Soehne', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* OhDear Primary Colors */
+    --color-primary: #ff3900;
+    --color-primary-light: #FF4C19;
+    --color-primary-50: #FFF8F5;
+
+    /* OhDear Red Scale */
+    --color-red-500: #ee3342;
+    --color-red-600: #d42d3a;
+    --color-red-700: #b92833;
+
+    /* OhDear Gray Scale */
+    --color-gray-50: #FAFCFF;
+    --color-gray-100: #F8FBFF;
+    --color-gray-150: #F5F8FD;
+    --color-gray-200: #ECF1F9;
+    --color-gray-250: #E1E9F3;
+    --color-gray-300: #CCD7E6;
+    --color-gray-400: #AABACE;
+    --color-gray-500: #95A1B7;
+    --color-gray-600: #808EA6;
+    --color-gray-700: #65768D;
+    --color-gray-800: #4A586D;
+    --color-gray-900: #323C4A;
+    --color-gray-950: #1D242E;
+    --color-gray-1000: #111515;
+
+    /* Oh Dear Slate colors for waves */
+    --color-slate-50: #FAFCFF;
+    --color-slate-100: #F8FBFF;
+    --color-slate-150: #F5F8FD;
+    --color-slate-200: #ECF1F9;
+    --color-slate-250: #E1E9F3;
+}
+
+/* Wave animations from Oh Dear */
+.wave-big-1 {
+    @apply bg-repeat-x;
+    animation: wave-big 240s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave-big-2 {
+    animation: wave-big 560s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite;
+}
+
+@keyframes wave-big {
+    0% {
+        background-position: 0px;
+    }
+    100% {
+        background-position: -3000px;
+    }
+}
+
+/* Grid background pattern */
+.bg-grid {
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Dark mode grid */
+@media (prefers-color-scheme: dark) {
+    .bg-grid {
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    }
 }

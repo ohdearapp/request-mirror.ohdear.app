@@ -1,0 +1,64 @@
+<?php
+
+namespace App\Traits;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+
+trait RequestMirrorTrait
+{
+    protected function buildResponse(Request $request, array $additional = []): JsonResponse
+    {
+        $json = $this->parseJsonData($request);
+
+        $response = [
+            'args' => $request->query(),
+            'data' => $this->getDataContent($request),
+            'files' => [],
+            'form' => $request->isJson() ? [] : $request->except('_token'),
+            'headers' => $this->formatHeaders($request),
+            'json' => $json,
+            'method' => $request->method(),
+            'origin' => $request->ip(),
+            'url' => $request->fullUrl(),
+        ];
+
+        return response()->json(array_merge($response, $additional));
+    }
+
+    protected function parseJsonData(Request $request): array
+    {
+        if ($request->isJson() && $request->getContent()) {
+            $decoded = json_decode($request->getContent(), true);
+            return $decoded ?: [];
+        }
+
+        return [];
+    }
+
+    protected function getDataContent(Request $request): string
+    {
+        // For JSON requests, return the raw JSON content
+        if ($request->isJson()) {
+            return $request->getContent();
+        }
+
+        // For form data, build URL-encoded string
+        if ($request->isMethod('POST') || $request->isMethod('PUT') || $request->isMethod('PATCH')) {
+            $data = $request->except('_token');
+            if (!empty($data)) {
+                return http_build_query($data);
+            }
+        }
+
+        // For other requests or raw content, return the raw content
+        return $request->getContent();
+    }
+
+    protected function formatHeaders(Request $request): array
+    {
+        return collect($request->headers->all())->map(function ($values) {
+            return implode(', ', $values);
+        })->toArray();
+    }
+}
