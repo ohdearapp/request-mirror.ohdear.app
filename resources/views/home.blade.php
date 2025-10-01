@@ -395,6 +395,181 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                 </div>
             </section>
 
+            <!-- Try it with curl -->
+            <section class="mb-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white mb-4">
+                        Try it with curl
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Get started in seconds. Here are some examples you can run in your terminal right now
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <!-- Basic GET request -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Basic GET request with query parameters</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <code class="block text-green-400 font-mono text-sm mb-6">curl "{{ url('/get?param1=value1&param2=value2') }}"</code>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "GET",
+  "url": "{{ url('/get?param1=value1&param2=value2') }}",
+  "args": {
+    "param1": "value1",
+    "param2": "value2"
+  },
+  "headers": {
+    "Host": "{{ request()->getHost() }}",
+    "User-Agent": "curl/8.7.1",
+    "Accept": "*/*"
+  },
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- POST JSON -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">POST request with JSON data</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code>curl -X POST {{ url('/post') }} \
+  -H "Content-Type: application/json" \
+  -d '{"username": "alice", "email": "alice@example.com"}'</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "POST",
+  "url": "{{ url('/post') }}",
+  "headers": {
+    "Content-Type": "application/json",
+    "User-Agent": "curl/8.7.1"
+  },
+  "json": {
+    "username": "alice",
+    "email": "alice@example.com"
+  },
+  "data": "{\"username\": \"alice\", \"email\": \"alice@example.com\"}",
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom headers -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Test custom headers</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code>curl {{ url('/headers') }} \
+  -H "X-Custom-Header: my-value" \
+  -H "Authorization: Bearer token123"</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "headers": {
+    "Host": "{{ request()->getHost() }}",
+    "User-Agent": "curl/8.7.1",
+    "Accept": "*/*",
+    "X-Custom-Header": "my-value",
+    "Authorization": "Bearer token123"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status codes -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Test with specific status codes</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code># Test a specific status code
+curl -i {{ url('/status/404') }}
+
+# Random status from a list
+curl -i {{ url('/status/200,404,500') }}</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{
+  "status": 404
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form data -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Submit form data</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code>curl -X POST {{ url('/post') }} \
+  -F "name=John Doe" \
+  -F "message=Hello World"</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "POST",
+  "url": "{{ url('/post') }}",
+  "headers": {
+    "Content-Type": "multipart/form-data; boundary=---..."
+  },
+  "form": {
+    "name": "John Doe",
+    "message": "Hello World"
+  },
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /anything endpoint -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Use the flexible /anything endpoint</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code># Accepts any HTTP method and any path
+curl -X PATCH {{ url('/anything/users/123') }} \
+  -H "Content-Type: application/json" \
+  -d '{"active": true}'</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "PATCH",
+  "url": "{{ url('/anything/users/123') }}",
+  "json": {
+    "active": true
+  },
+  "data": "{\"active\": true}",
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Use Cases -->
             <section class="mb-20">
                 <div class="text-center mb-16">
