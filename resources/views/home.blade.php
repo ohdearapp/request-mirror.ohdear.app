@@ -257,47 +257,91 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                         <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Special Endpoints</h3>
                         <div class="space-y-4">
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/anything</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/anything">
+                                        /anything
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Accepts any HTTP method</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/anything/*</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/anything/will/be/accepted">
+                                        /anything/*
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Captures any path</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/headers</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/headers">
+                                        /headers
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns request headers</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/ip</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/ip">
+                                        /ip
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns your IP address</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/user-agent</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/user-agent">
+                                        /user-agent
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns User-Agent string</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/status/{codes}</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/status/418">
+                                        /status/{codes}
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns given status code or random from list</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/html</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/html">
+                                        /html
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple HTML document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/json</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/json">
+                                        /json
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple JSON document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/robots.txt</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/robots-txt">
+                                        /robots-txt
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns robots.txt rules</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/xml</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/xml">
+                                        /xml
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple XML document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/gzip</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/gzip">
+                                        /gzip
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns gzip-compressed JSON data</div>
                             </div>
                         </div>

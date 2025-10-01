@@ -12,7 +12,7 @@ Route::get('/json', function () {
     return response(view('json'), 200, ['Content-Type' => 'application/json']);
 });
 
-Route::get('/robots.txt', function () {
+Route::get('/robots-txt', function () {
     return response(view('robots'), 200, ['Content-Type' => 'text/plain']);
 });
 
