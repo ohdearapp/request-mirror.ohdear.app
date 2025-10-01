@@ -257,47 +257,91 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                         <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Special Endpoints</h3>
                         <div class="space-y-4">
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/anything</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/anything">
+                                        /anything
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Accepts any HTTP method</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/anything/*</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/anything/will/be/accepted">
+                                        /anything/*
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Captures any path</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/headers</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/headers">
+                                        /headers
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns request headers</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/ip</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/ip">
+                                        /ip
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns your IP address</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/user-agent</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/user-agent">
+                                        /user-agent
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns User-Agent string</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/status/{codes}</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/status/418">
+                                        /status/{codes}
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns given status code or random from list</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/html</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/html">
+                                        /html
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple HTML document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/json</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/json">
+                                        /json
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple JSON document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/robots.txt</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/robots-txt">
+                                        /robots-txt
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns robots.txt rules</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/xml</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/xml">
+                                        /xml
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple XML document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">/gzip</div>
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/gzip">
+                                        /gzip
+                                    </a>
+                                </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Returns gzip-compressed JSON data</div>
                             </div>
                         </div>
@@ -347,6 +391,181 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
   <span class="text-blue-400">"files"</span>: {},
   <span class="text-blue-400">"origin"</span>: <span class="text-green-400">"127.0.0.1"</span>
 }</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Try it with curl -->
+            <section class="mb-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white mb-4">
+                        Try it with curl
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Get started in seconds. Here are some examples you can run in your terminal right now
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <!-- Basic GET request -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Basic GET request with query parameters</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <code class="block text-green-400 font-mono text-sm mb-6">curl "{{ url('/get?param1=value1&param2=value2') }}"</code>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "GET",
+  "url": "{{ url('/get?param1=value1&param2=value2') }}",
+  "args": {
+    "param1": "value1",
+    "param2": "value2"
+  },
+  "headers": {
+    "Host": "{{ request()->getHost() }}",
+    "User-Agent": "curl/8.7.1",
+    "Accept": "*/*"
+  },
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- POST JSON -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">POST request with JSON data</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code>curl -X POST {{ url('/post') }} \
+  -H "Content-Type: application/json" \
+  -d '{"username": "alice", "email": "alice@example.com"}'</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "POST",
+  "url": "{{ url('/post') }}",
+  "headers": {
+    "Content-Type": "application/json",
+    "User-Agent": "curl/8.7.1"
+  },
+  "json": {
+    "username": "alice",
+    "email": "alice@example.com"
+  },
+  "data": "{\"username\": \"alice\", \"email\": \"alice@example.com\"}",
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom headers -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Test custom headers</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code>curl {{ url('/headers') }} \
+  -H "X-Custom-Header: my-value" \
+  -H "Authorization: Bearer token123"</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "headers": {
+    "Host": "{{ request()->getHost() }}",
+    "User-Agent": "curl/8.7.1",
+    "Accept": "*/*",
+    "X-Custom-Header": "my-value",
+    "Authorization": "Bearer token123"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status codes -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Test with specific status codes</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code># Test a specific status code
+curl -i {{ url('/status/404') }}
+
+# Random status from a list
+curl -i {{ url('/status/200,404,500') }}</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{
+  "status": 404
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form data -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Submit form data</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code>curl -X POST {{ url('/post') }} \
+  -F "name=John Doe" \
+  -F "message=Hello World"</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "POST",
+  "url": "{{ url('/post') }}",
+  "headers": {
+    "Content-Type": "multipart/form-data; boundary=---..."
+  },
+  "form": {
+    "name": "John Doe",
+    "message": "Hello World"
+  },
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /anything endpoint -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Use the flexible /anything endpoint</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code># Accepts any HTTP method and any path
+curl -X PATCH {{ url('/anything/users/123') }} \
+  -H "Content-Type: application/json" \
+  -d '{"active": true}'</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code>{
+  "method": "PATCH",
+  "url": "{{ url('/anything/users/123') }}",
+  "json": {
+    "active": true
+  },
+  "data": "{\"active\": true}",
+  "origin": "127.0.0.1"
+}</code></pre>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

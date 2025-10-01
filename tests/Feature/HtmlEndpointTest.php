@@ -8,4 +8,10 @@ it('returns HTML document', function () {
 
     expect($response->content())
         ->toContain('<!DOCTYPE html>');
+
+    // It should also include the HTTP request headers
+    expect($response->content())
+        ->toContain('user-agent')
+        ->toContain('accept')
+        ->toContain('accept-language');
 });
