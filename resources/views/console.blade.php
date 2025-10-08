@@ -110,12 +110,6 @@
                 </div>
             @endif
         </div>
-
-        <div class="mt-8 text-center">
-            <a href="{{ route('home') }}" class="text-primary hover:text-primary-light font-medium">
-                ← Back to Home
-            </a>
-        </div>
     </section>
 
     @if($messages->isNotEmpty())
