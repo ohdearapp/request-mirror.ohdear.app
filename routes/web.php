@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormController;
 
 Route::view('/', 'home')->name('home');
 
@@ -19,3 +20,6 @@ Route::get('/robots-txt', function () {
 Route::get('/xml', function () {
     return response(view('xml'), 200, ['Content-Type' => 'application/xml']);
 });
+
+Route::get('/form', [FormController::class, 'show'])->name('form.show');
+Route::post('/form', [FormController::class, 'submit'])->name('form.submit');

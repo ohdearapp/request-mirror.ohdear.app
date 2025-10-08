@@ -22,11 +22,11 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center py-6">
                     <div class="flex items-center space-x-4">
-                        <a href="https://ohdear.app" target="_blank" class="hover:opacity-80 transition-opacity">
+                        <a href="https://ohdear.app" target="_blank" class="hover:opacity-80 transition-opacity cursor-pointer">
                             <img src="/img/logo/ohdear-logo.svg" alt="Oh Dear" class="h-8 w-auto">
                         </a>
                         <div class="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
-                        <span class="text-lg font-medium text-gray-900 dark:text-white">Request Mirror</span>
+                        <a href="{{ route('home') }}" class="text-lg font-medium text-gray-900 dark:text-white cursor-pointer hover:opacity-80 transition-opacity">Request Mirror</a>
                     </div>
                     <a href="https://ohdear.app" target="_blank" class="bg-primary hover:bg-primary-light text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors">
                         Visit Oh Dear

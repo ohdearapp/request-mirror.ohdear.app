@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
+class FormController
+{
+    public function show(): View
+    {
+        return view('form');
+    }
+
+    public function submit(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required', 'email'],
+        ]);
+
+        return redirect()->route('form.show')->with('success', 'Thank you for your submission!');
+    }
+}
