@@ -21,5 +21,17 @@ Route::get('/xml', function () {
     return response(view('xml'), 200, ['Content-Type' => 'application/xml']);
 });
 
+Route::get('/console', function () {
+    $messages = collect(request()->query('messages', []))
+        ->map(function ($message) {
+            return [
+                'type' => $message['type'] ?? 'log',
+                'message' => $message['message'] ?? '',
+            ];
+        });
+
+    return view('console', ['messages' => $messages]);
+});
+
 Route::get('/form', [FormController::class, 'show'])->name('form.show');
 Route::post('/form', [FormController::class, 'submit'])->name('form.submit');

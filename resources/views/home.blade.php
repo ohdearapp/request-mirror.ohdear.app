@@ -352,6 +352,14 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 </div>
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Test form validation and browser automation</div>
                             </div>
+                            <div class="py-2">
+                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
+                                    <a href="/console">
+                                        /console
+                                    </a>
+                                </div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Output JavaScript console messages for testing</div>
+                            </div>
                         </div>
                     </div>
                 </div>
