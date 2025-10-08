@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+@php echo '<?xml version="1.0" encoding="UTF-8"?>'; @endphp
 <document>
     <message>This is a simple XML document</message>
     <generated_by>request-mirror</generated_by>
@@ -7,4 +7,9 @@
         <example>true</example>
         <version>1.0</version>
     </data>
+    <http-headers>
+@foreach(request()->headers->all() as $name => $values)
+        <header name="{{ $name }}">{{ is_array($values) ? implode(', ', $values) : $values }}</header>
+@endforeach
+    </http-headers>
 </document>
