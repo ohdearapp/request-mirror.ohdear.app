@@ -59,7 +59,7 @@ trait RequestMirrorTrait
     protected function formatHeaders(Request $request): array
     {
         $headers = collect($request->headers->all())->map(function ($values) {
-            return implode(', ', $values);
+            return is_array($values) ? implode(', ', $values) : $values;
         })->toArray();
 
         return $this->removeKeysFromArray($headers, $this->getCloudflareHeaders());

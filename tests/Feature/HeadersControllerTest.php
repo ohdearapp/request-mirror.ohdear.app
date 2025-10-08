@@ -44,3 +44,33 @@ it('filters out Cloudflare headers', function () {
     expect($headers)->not->toHaveKey('x-forwarded-for');
     expect($headers)->not->toHaveKey('x-forwarded-proto');
 });
+
+it('handles both array and string header values', function () {
+    // Simulate a request where some headers might be strings and others arrays
+    // This tests the fix for the implode() TypeError
+    $response = $this->call('GET', '/headers', [], [], [], [
+        'HTTP_X_STRING_HEADER' => 'single-value',
+        'HTTP_X_ARRAY_HEADER' => ['value1', 'value2'],
+        'HTTP_ACCEPT' => 'text/html,application/json',
+        'HTTP_USER_AGENT' => 'Test Browser',
+    ]);
+
+    $response->assertOk()
+        ->assertJsonStructure([
+            'headers',
+        ]);
+
+    $headers = $response->json('headers');
+
+    // Verify string headers are handled correctly
+    expect($headers)->toHaveKey('x-string-header');
+    expect($headers['x-string-header'])->toBe('single-value');
+
+    // Verify array headers are joined with comma
+    expect($headers)->toHaveKey('x-array-header');
+    expect($headers['x-array-header'])->toBe('value1, value2');
+
+    // Verify normal headers still work
+    expect($headers)->toHaveKey('accept');
+    expect($headers)->toHaveKey('user-agent');
+});
