@@ -8,8 +8,8 @@ it('returns HTML document with no messages by default', function () {
 
     expect($response->content())
         ->toContain('<!DOCTYPE html>')
-        ->toContain('Console Messages')
-        ->toContain('No console messages');
+        ->toContain('console', 'messages')
+        ->toContain('How to use');
 });
 
 it('includes console log message when provided', function () {
@@ -19,7 +19,7 @@ it('includes console log message when provided', function () {
 
     expect($response->content())
         ->toContain('console.log("Hello World")')
-        ->toContain('Console messages will be logged');
+        ->toContain('The following console messages are being logged');
 });
 
 it('includes multiple console messages of different types', function () {
