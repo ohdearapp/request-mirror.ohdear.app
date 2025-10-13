@@ -18,6 +18,7 @@ class FormController
         $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
+            'terms' => ['required', 'accepted'],
         ]);
 
         return redirect()->route('form.show')->with('success', 'Thank you for your submission!');
