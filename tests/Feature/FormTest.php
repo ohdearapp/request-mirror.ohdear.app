@@ -39,6 +39,7 @@ it('successfully submits form with valid data', function () {
     $response = $this->post('/form', [
         'name' => 'John Doe',
         'email' => 'john@example.com',
+        'terms' => '1',
     ]);
 
     $response->assertRedirect(route('form.show'))
@@ -62,6 +63,7 @@ it('displays success message after successful submission', function () {
     $this->post('/form', [
         'name' => 'Jane Doe',
         'email' => 'jane@example.com',
+        'terms' => '1',
     ]);
 
     $response = $this->get('/form');
