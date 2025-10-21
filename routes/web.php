@@ -48,12 +48,12 @@ Route::get('/sitemap.xml', function () {
         ['loc' => $baseUrl.'/xml', 'priority' => '0.8'],
         ['loc' => $baseUrl.'/console', 'priority' => '0.8'],
         ['loc' => $baseUrl.'/form', 'priority' => '0.8'],
-        ['loc' => $baseUrl.'/api/get', 'priority' => '0.7'],
-        ['loc' => $baseUrl.'/api/headers', 'priority' => '0.7'],
-        ['loc' => $baseUrl.'/api/ip', 'priority' => '0.7'],
-        ['loc' => $baseUrl.'/api/user-agent', 'priority' => '0.7'],
-        ['loc' => $baseUrl.'/api/gzip', 'priority' => '0.7'],
-        ['loc' => $baseUrl.'/api/anything', 'priority' => '0.7'],
+        ['loc' => $baseUrl.'/get', 'priority' => '0.7'],
+        ['loc' => $baseUrl.'/headers', 'priority' => '0.7'],
+        ['loc' => $baseUrl.'/ip', 'priority' => '0.7'],
+        ['loc' => $baseUrl.'/user-agent', 'priority' => '0.7'],
+        ['loc' => $baseUrl.'/gzip', 'priority' => '0.7'],
+        ['loc' => $baseUrl.'/anything', 'priority' => '0.7'],
     ];
 
     return response()->view('sitemap', ['urls' => $urls], 200, [
