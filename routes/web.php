@@ -35,3 +35,28 @@ Route::get('/console', function () {
 
 Route::get('/form', [FormController::class, 'show'])->name('form.show');
 Route::post('/form', [FormController::class, 'submit'])->name('form.submit');
+
+Route::get('/sitemap.xml', function () {
+    $baseUrl = config('app.url');
+
+    // Define all public GET routes
+    $urls = [
+        ['loc' => $baseUrl, 'priority' => '1.0'],
+        ['loc' => $baseUrl . '/html', 'priority' => '0.8'],
+        ['loc' => $baseUrl . '/json', 'priority' => '0.8'],
+        ['loc' => $baseUrl . '/robots-txt', 'priority' => '0.8'],
+        ['loc' => $baseUrl . '/xml', 'priority' => '0.8'],
+        ['loc' => $baseUrl . '/console', 'priority' => '0.8'],
+        ['loc' => $baseUrl . '/form', 'priority' => '0.8'],
+        ['loc' => $baseUrl . '/api/get', 'priority' => '0.7'],
+        ['loc' => $baseUrl . '/api/headers', 'priority' => '0.7'],
+        ['loc' => $baseUrl . '/api/ip', 'priority' => '0.7'],
+        ['loc' => $baseUrl . '/api/user-agent', 'priority' => '0.7'],
+        ['loc' => $baseUrl . '/api/gzip', 'priority' => '0.7'],
+        ['loc' => $baseUrl . '/api/anything', 'priority' => '0.7'],
+    ];
+
+    return response()->view('sitemap', ['urls' => $urls], 200, [
+        'Content-Type' => 'application/xml'
+    ]);
+})->name('sitemap');
