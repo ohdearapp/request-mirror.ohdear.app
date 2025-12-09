@@ -103,13 +103,13 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
 
                 <div class="grid lg:grid-cols-3 gap-8">
                     <!-- HTTP Methods -->
-                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                    <div class="card">
+                        <div class="card-icon">
                             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">HTTP Methods</h3>
+                        <h3 class="card-title">HTTP Methods</h3>
                         <div class="space-y-4">
                             <div class="flex items-center justify-between py-2">
                                 <span class="font-mono text-sm text-gray-700 dark:text-gray-300">GET /get</span>
@@ -134,16 +134,14 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                         </div>
                     </div>
 
-
-
                     <!-- Response Info -->
-                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                    <div class="card">
+                        <div class="card-icon">
                             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Response Keys</h3>
+                        <h3 class="card-title">Response Keys</h3>
                         <div class="space-y-4">
                             <div class="flex items-center space-x-4">
                                 <span class="inline-block w-5 h-5 text-gray-900 dark:text-gray-100">
@@ -248,125 +246,117 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                     </div>
 
                     <!-- Special Endpoints -->
-                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                    <div class="card">
+                        <div class="card-icon">
                             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V9a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V4a1 1 0 011-1h3a1 1 0 011 1v1z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Special Endpoints</h3>
+                        <h3 class="card-title">Special Endpoints</h3>
                         <div class="space-y-4">
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/anything">
-                                        /anything
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Accepts any HTTP method</div>
+                                <div class="route-link"><a href="/anything">/anything</a></div>
+                                <div class="route-description">Accepts any HTTP method</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/anything/will/be/accepted">
-                                        /anything/*
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Captures any path</div>
+                                <div class="route-link"><a href="/anything/will/be/accepted">/anything/*</a></div>
+                                <div class="route-description">Captures any path</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/headers">
-                                        /headers
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns request headers</div>
+                                <div class="route-link"><a href="/headers">/headers</a></div>
+                                <div class="route-description">Returns request headers</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/ip">
-                                        /ip
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns your IP address</div>
+                                <div class="route-link"><a href="/ip">/ip</a></div>
+                                <div class="route-description">Returns your IP address</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/user-agent">
-                                        /user-agent
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns User-Agent string</div>
+                                <div class="route-link"><a href="/user-agent">/user-agent</a></div>
+                                <div class="route-description">Returns User-Agent string</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/status/418">
-                                        /status/{codes}
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns given status code or random from list</div>
+                                <div class="route-link"><a href="/status/418">/status/{codes}</a></div>
+                                <div class="route-description">Returns given status code or random from list</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Response Types -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Response Types</h3>
+                        <div class="space-y-4">
+                            <div class="py-2">
+                                <div class="route-link"><a href="/html">/html</a></div>
+                                <div class="route-description">Returns a simple HTML document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/html">
-                                        /html
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple HTML document</div>
+                                <div class="route-link"><a href="/json">/json</a></div>
+                                <div class="route-description">Returns a simple JSON document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/json">
-                                        /json
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple JSON document</div>
+                                <div class="route-link"><a href="/xml">/xml</a></div>
+                                <div class="route-description">Returns a simple XML document</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/robots-txt">
-                                        /robots-txt
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns robots.txt rules</div>
+                                <div class="route-link"><a href="/gzip">/gzip</a></div>
+                                <div class="route-description">Returns gzip-compressed JSON data</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/xml">
-                                        /xml
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns a simple XML document</div>
+                                <div class="route-link"><a href="/console">/console</a></div>
+                                <div class="route-description">Output JavaScript console messages</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typical Site Routes -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Typical Site Routes</h3>
+                        <div class="space-y-4">
+                            <div class="py-2">
+                                <div class="route-link"><a href="/sitemap.xml">/sitemap.xml</a></div>
+                                <div class="route-description">Returns the sitemap.xml file</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/gzip">
-                                        /gzip
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns gzip-compressed JSON data</div>
+                                <div class="route-link"><a href="/robots-txt">/robots-txt</a></div>
+                                <div class="route-description">Returns robots.txt rules</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/form">
-                                        /form
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Test form validation and browser automation</div>
+                                <div class="route-link"><a href="/form">/form</a></div>
+                                <div class="route-description">Test form validation and browser automation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latency -->
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Latency</h3>
+                        <div class="space-y-4">
+                            <div class="py-2">
+                                <div class="route-link"><a href="/latency/200">/latency/{ms}</a></div>
+                                <div class="route-description">Adds a fixed delay in milliseconds (0-1000)</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/console">
-                                        /console
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Output JavaScript console messages for testing</div>
+                                <div class="route-link"><a href="/latency/between/100/and/500">/latency/between/{min}/and/{max}</a></div>
+                                <div class="route-description">Adds a random delay between min and max ms</div>
                             </div>
                             <div class="py-2">
-                                <div class="font-mono text-sm text-gray-700 dark:text-gray-300 mb-1">
-                                    <a href="/sitemap.xml">
-                                        /sitemap.xml
-                                    </a>
-                                </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Returns the sitemap.xml file</div>
+                                <div class="route-link"><a href="/latency/random">/latency/random</a></div>
+                                <div class="route-description">Adds a random delay between 0-1000ms</div>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\GetController;
 use App\Http\Controllers\GzipController;
 use App\Http\Controllers\HeadersController;
 use App\Http\Controllers\IpController;
+use App\Http\Controllers\LatencyController;
 use App\Http\Controllers\PatchController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PutController;
@@ -28,3 +29,7 @@ Route::get('/user-agent', UserAgentController::class);
 Route::get('/gzip', GzipController::class);
 
 Route::any('/status/{codes}', StatusController::class);
+
+Route::get('/latency/random', [LatencyController::class, 'random']);
+Route::get('/latency/between/{min}/and/{max}', [LatencyController::class, 'between']);
+Route::get('/latency/{milliseconds}', [LatencyController::class, 'fixed']);
