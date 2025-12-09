@@ -19,7 +19,7 @@ jobs:
   quality:
     runs-on: ubuntu-latest
     # Skip if this is an auto-commit from the workflow itself
-    if: ${{ !contains(github.event.head_commit.message, 'fix code style') }}
+    if: "!contains(github.event.head_commit.message, 'fix code style')"
     steps:
       - uses: actions/checkout@v4
 
