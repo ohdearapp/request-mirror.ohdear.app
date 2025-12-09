@@ -81,3 +81,51 @@
             linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     }
 }
+
+/* Homepage component styles */
+.card {
+    @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow;
+}
+
+.card-icon {
+    @apply w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6;
+}
+
+.card-title {
+    @apply text-xl font-semibold mb-6 text-gray-900 dark:text-white;
+}
+
+.route-link {
+    @apply font-mono text-sm text-gray-700 dark:text-gray-300 mb-1;
+}
+
+.route-link a {
+    @apply inline-block relative px-1.5 py-0.5 -mx-1.5 rounded transition-all duration-150 ease-out;
+    text-decoration: none;
+}
+
+.route-link a::before {
+    content: '';
+    @apply absolute inset-0 rounded opacity-0 transition-opacity duration-150;
+    background: linear-gradient(135deg, rgba(255, 57, 0, 0.08) 0%, rgba(255, 57, 0, 0.04) 100%);
+}
+
+.route-link a:hover {
+    @apply text-primary;
+    transform: translateX(2px);
+}
+
+.route-link a:hover::before {
+    @apply opacity-100;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .route-link a::before {
+        background: linear-gradient(135deg, rgba(255, 57, 0, 0.15) 0%, rgba(255, 57, 0, 0.08) 100%);
+    }
+}
+
+.route-description {
+    @apply text-xs text-gray-500 dark:text-gray-400;
+}
