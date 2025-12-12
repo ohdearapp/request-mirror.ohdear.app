@@ -36,6 +36,8 @@ Route::get('/console', function () {
 Route::get('/form', [FormController::class, 'show'])->name('form.show');
 Route::post('/form', [FormController::class, 'submit'])->name('form.submit');
 
+Route::view('/examples/product-info-page', 'examples.product-info-page')->name('examples.product-info-page');
+
 Route::get('/sitemap.xml', function () {
     $baseUrl = config('app.url');
 
@@ -48,6 +50,7 @@ Route::get('/sitemap.xml', function () {
         ['loc' => $baseUrl.'/xml', 'priority' => '0.8'],
         ['loc' => $baseUrl.'/console', 'priority' => '0.8'],
         ['loc' => $baseUrl.'/form', 'priority' => '0.8'],
+        ['loc' => $baseUrl.'/examples/product-info-page', 'priority' => '0.8'],
         ['loc' => $baseUrl.'/get', 'priority' => '0.7'],
         ['loc' => $baseUrl.'/headers', 'priority' => '0.7'],
         ['loc' => $baseUrl.'/ip', 'priority' => '0.7'],

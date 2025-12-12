@@ -363,6 +363,35 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                 </div>
             </section>
 
+            <!-- Website Examples -->
+            <section class="mb-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white mb-4">
+                        Website Examples
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Simple, real-world website examples for testing parsers, crawlers, and AI agents
+                    </p>
+                </div>
+
+                <div class="max-w-2xl mx-auto">
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Example Pages</h3>
+                        <div class="space-y-4">
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/product-info-page">/examples/product-info-page</a></div>
+                                <div class="route-description">Product detail page with JSON-LD, meta tags, reviews, and schema.org markup</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Response Format -->
             <section class="mb-20">
                 <div class="text-center mb-16">
