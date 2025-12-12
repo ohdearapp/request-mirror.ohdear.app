@@ -133,7 +133,7 @@
         },
         "aggregateRating": {
             "@@type": "AggregateRating",
-            "ratingValue": "4.75",
+            "ratingValue": "4.5",
             "reviewCount": "2",
             "bestRating": "5",
             "worstRating": "1"
@@ -143,15 +143,15 @@
                 "@@type": "Review",
                 "reviewRating": {
                     "@@type": "Rating",
-                    "ratingValue": "4.5",
+                    "ratingValue": "4",
                     "bestRating": "5"
                 },
                 "author": {
                     "@@type": "Person",
-                    "name": "Sarah Chen"
+                    "name": "Wouter"
                 },
                 "datePublished": "{{ now()->subDays(1)->format('Y-m-d') }}",
-                "reviewBody": "Oh Dear has become essential to our operations. The SSL monitoring alone has saved us from several potential outages. Great value for the price."
+                "reviewBody": "Caught our wildcard cert expiring 3 days before Black Friday. That alone paid for a decade of the subscription. Only gripe: wish the dashboard had a dark mode for us night owls."
             },
             {
                 "@@type": "Review",
@@ -162,10 +162,10 @@
                 },
                 "author": {
                     "@@type": "Person",
-                    "name": "Marcus Thompson"
+                    "name": "Ines @ Acme Agency"
                 },
                 "datePublished": "{{ now()->subDays(1)->format('Y-m-d') }}",
-                "reviewBody": "The best monitoring service out there. Comprehensive, reliable, and the alerts are instant. Been using it for two years now and couldn't be happier."
+                "reviewBody": "We manage 43 client sites. Last month the broken link checker found a typo'd URL on a client's homepage that had been there for six months. Nobody noticed until Oh Dear did."
             }
         ]
     }
@@ -313,7 +313,7 @@
                             </svg>
                         @endfor
                     </div>
-                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">4.75 out of 5 (2 reviews)</span>
+                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">4.5 out of 5 (2 reviews)</span>
                 </div>
 
                 <!-- Description -->
@@ -431,28 +431,22 @@
                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                 </svg>
                             @endfor
-                            <svg class="w-4 h-4" viewBox="0 0 20 20">
-                                <defs>
-                                    <linearGradient id="halfStar1">
-                                        <stop offset="50%" stop-color="currentColor" class="text-yellow-400"/>
-                                        <stop offset="50%" stop-color="currentColor" class="text-gray-300 dark:text-gray-600"/>
-                                    </linearGradient>
-                                </defs>
-                                <path fill="url(#halfStar1)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            <svg class="w-4 h-4 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
                         </div>
-                        <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.5/5</span>
+                        <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4/5</span>
                     </div>
                     <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        "Oh Dear has become essential to our operations. The SSL monitoring alone has saved us from several potential outages. Great value for the price."
+                        "Caught our wildcard cert expiring 3 days before Black Friday. That alone paid for a decade of the subscription. Only gripe: wish the dashboard had a dark mode for us night owls."
                     </p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-primary font-medium text-sm">SC</span>
+                            <span class="text-primary font-medium text-sm">W</span>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-900 dark:text-white">Sarah Chen</p>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">DevOps Engineer</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Wouter</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Rotterdam</p>
                         </div>
                     </div>
                 </div>
@@ -470,15 +464,15 @@
                         <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">5/5</span>
                     </div>
                     <p class="text-gray-600 dark:text-gray-300 mb-6">
-                        "The best monitoring service out there. Comprehensive, reliable, and the alerts are instant. Been using it for two years now and couldn't be happier."
+                        "We manage 43 client sites. Last month the broken link checker found a typo'd URL on a client's homepage that had been there for six months. Nobody noticed until Oh Dear did."
                     </p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-primary font-medium text-sm">MT</span>
+                            <span class="text-primary font-medium text-sm">I</span>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-900 dark:text-white">Marcus Thompson</p>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">Senior Developer</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Ines</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Acme Agency</p>
                         </div>
                     </div>
                 </div>

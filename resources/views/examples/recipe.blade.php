@@ -143,10 +143,10 @@
                 },
                 "author": {
                     "@@type": "Person",
-                    "name": "A Happy Developer"
+                    "name": "Pieter"
                 },
                 "datePublished": "{{ now()->subDays(1)->format('Y-m-d') }}",
-                "reviewBody": "Finally, a recipe I can follow! My websites have never tasted better. 10/10 would monitor again."
+                "reviewBody": "Made this for my 12 WordPress sites. The scheduled task monitoring caught a failed backup job I'd missed for 3 weeks. Chef's kiss."
             }
         ],
         "nutrition": {
@@ -449,13 +449,13 @@
                     </div>
                     <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">5/5</span>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-6 italic">"Finally, a recipe I can follow! My websites have never tasted better. 10/10 would monitor again."</p>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 italic">"Made this for my 12 WordPress sites. The scheduled task monitoring caught a failed backup job I'd missed for 3 weeks. Chef's kiss."</p>
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-                        <span class="text-primary font-medium text-sm">HD</span>
+                        <span class="text-primary font-medium text-sm">P</span>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-900 dark:text-white">A Happy Developer</p>
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">Pieter</p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">{{ now()->subDays(1)->format('F Y') }}</p>
                     </div>
                 </div>
