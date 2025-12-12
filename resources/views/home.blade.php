@@ -363,6 +363,62 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                 </div>
             </section>
 
+            <!-- Website Examples -->
+            <section class="mb-20">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-white mb-4">
+                        Website Examples
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Simple, real-world website examples for testing parsers, crawlers, and AI agents
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">E-commerce & Business</h3>
+                        <div class="space-y-4">
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/product-info-page">/examples/product-info-page</a></div>
+                                <div class="route-description">Product detail page with JSON-LD Product schema, reviews, and rich meta tags</div>
+                            </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/contact">/examples/contact</a></div>
+                                <div class="route-description">Contact page with LocalBusiness schema, opening hours, and geo data</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Content & Articles</h3>
+                        <div class="space-y-4">
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/blog-article">/examples/blog-article</a></div>
+                                <div class="route-description">Blog post with Article schema, author info, and social meta tags</div>
+                            </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/recipe">/examples/recipe</a></div>
+                                <div class="route-description">Recipe page with full Recipe schema, ingredients, steps, and nutrition</div>
+                            </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/event">/examples/event</a></div>
+                                <div class="route-description">Event page with Event schema, location, schedule, and ticketing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Response Format -->
             <section class="mb-20">
                 <div class="text-center mb-16">

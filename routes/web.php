@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FormController;
+use App\Http\Middleware\NoIndexHeader;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
@@ -35,6 +36,14 @@ Route::get('/console', function () {
 
 Route::get('/form', [FormController::class, 'show'])->name('form.show');
 Route::post('/form', [FormController::class, 'submit'])->name('form.submit');
+
+Route::middleware(NoIndexHeader::class)->prefix('examples')->group(function () {
+    Route::view('/product-info-page', 'examples.product-info-page')->name('examples.product-info-page');
+    Route::view('/blog-article', 'examples.blog-article')->name('examples.blog-article');
+    Route::view('/recipe', 'examples.recipe')->name('examples.recipe');
+    Route::view('/event', 'examples.event')->name('examples.event');
+    Route::view('/contact', 'examples.contact')->name('examples.contact');
+});
 
 Route::get('/sitemap.xml', function () {
     $baseUrl = config('app.url');
