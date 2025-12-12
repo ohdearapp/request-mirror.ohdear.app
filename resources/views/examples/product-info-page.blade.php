@@ -8,7 +8,7 @@
     <title>Oh Dear Subscription - Website Monitoring Service</title>
     <meta name="description" content="Get comprehensive website monitoring with Oh Dear. Track uptime, SSL certificates, broken links, DNS changes, and more. Starting at €15/month.">
     <meta name="keywords" content="website monitoring, uptime monitoring, SSL monitoring, Oh Dear, server monitoring">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Oh Dear">
     <meta name="publisher" content="Oh Dear BV">
 
@@ -150,7 +150,7 @@
                     "@@type": "Person",
                     "name": "Sarah Chen"
                 },
-                "datePublished": "2024-08-15",
+                "datePublished": "{{ now()->subDays(1)->format('Y-m-d') }}",
                 "reviewBody": "Oh Dear has become essential to our operations. The SSL monitoring alone has saved us from several potential outages. Great value for the price."
             },
             {
@@ -164,7 +164,7 @@
                     "@@type": "Person",
                     "name": "Marcus Thompson"
                 },
-                "datePublished": "2024-09-22",
+                "datePublished": "{{ now()->subDays(1)->format('Y-m-d') }}",
                 "reviewBody": "The best monitoring service out there. Comprehensive, reliable, and the alerts are instant. Been using it for two years now and couldn't be happier."
             }
         ]
@@ -275,7 +275,7 @@
 
     <!-- Simple Header -->
     <header class="border-b border-gray-200 dark:border-gray-800">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center justify-between">
                 <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Request Mirror Product Example</span>
                 <a href="{{ route('home') }}" class="text-sm text-primary hover:text-primary-light">Back to Request Mirror</a>
@@ -284,20 +284,20 @@
     </header>
 
     <!-- Product Section -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="lg:grid lg:grid-cols-2 lg:gap-12">
-            <!-- Product Image -->
-            <div class="mb-8 lg:mb-0">
-                <div class="bg-gray-100 dark:bg-gray-900 rounded-2xl py-16 border border-gray-200 dark:border-gray-800">
-                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <p class="text-center text-primary font-semibold text-xl leading-tight">
-                        oh<br>dear
-                    </p>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Product Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- Product Image Card -->
+            <div class="card flex flex-col items-center justify-center py-12">
+                <div class="card-icon !w-20 !h-20 !mb-6">
+                    <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
                 </div>
+                <p class="text-center text-primary font-semibold text-2xl leading-tight">
+                    oh<br>dear
+                </p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">Website Monitoring</p>
             </div>
 
             <!-- Product Info -->
@@ -317,12 +317,12 @@
                 </div>
 
                 <!-- Description -->
-                <div class="prose prose-gray dark:prose-invert mb-6">
+                <div class="space-y-4 mb-8">
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        All-in-one website monitoring that consolidates multiple tools into a single platform. Track uptime from global locations, monitor SSL certificate expiration, detect broken links and mixed content, watch for DNS changes, verify scheduled tasks, and check application health.
+                        People love all-in-one tools. So we built Oh Dear as one of the most complete website monitoring platforms out there. Track uptime from multiple locations, get warned before your SSL certificates expire, find broken links before your visitors do, and make sure your scheduled tasks actually run.
                     </p>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        Get instant alerts via Slack, Discord, Teams, email, SMS, or webhooks. Because downtime happens, certificates expire, and links break — but the faster you know, the less you need to worry.
+                        Receive alerts on your preferred platform - Slack, Discord, Teams, email, SMS, or webhooks. Because downtime happens, certificates expire, and links break. But the faster you know, the less you need to worry.
                     </p>
                 </div>
 
@@ -334,58 +334,96 @@
 
                 <!-- Buy Button -->
                 <a href="https://ohdear.app/" target="_blank" rel="noopener" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-light text-white font-medium rounded-xl transition-colors text-lg">
-                    Buy Now
+                    Start Monitoring
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
                 </a>
-
-                <!-- Features List -->
-                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white mb-4">What's included:</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                            <svg class="w-4 h-4 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Uptime monitoring from multiple locations
-                        </li>
-                        <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                            <svg class="w-4 h-4 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            SSL certificate monitoring
-                        </li>
-                        <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                            <svg class="w-4 h-4 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Broken link detection
-                        </li>
-                        <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                            <svg class="w-4 h-4 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            DNS & scheduled task monitoring
-                        </li>
-                        <li class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                            <svg class="w-4 h-4 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Multi-channel notifications
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
 
-        <!-- Reviews Section -->
-        <section class="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
-            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8">Customer Reviews</h2>
+        <!-- Features Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">What's included</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="card !p-6">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">Uptime Monitoring</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Check your sites from multiple locations worldwide, every minute.</p>
+                </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Feature 2 -->
+                <div class="card !p-6">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">SSL Certificates</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Get warned before your certificates expire. No more surprise outages.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card !p-6">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">Broken Links</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Find broken links before your visitors do. Keep your site healthy.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="card !p-6">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">DNS Monitoring</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Track DNS changes and get alerted when records change unexpectedly.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="card !p-6">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">Scheduled Tasks</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Make sure your cron jobs actually run. Know when they fail.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="card !p-6">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">Multi-channel Alerts</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Slack, Discord, Teams, email, SMS, webhooks - get notified your way.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">Customer reviews</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <!-- Review 1 -->
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+                <div class="card">
                     <div class="flex items-center mb-4">
                         <div class="flex text-yellow-400">
                             @for ($i = 0; $i < 4; $i++)
@@ -405,15 +443,22 @@
                         </div>
                         <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.5/5</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
                         "Oh Dear has become essential to our operations. The SSL monitoring alone has saved us from several potential outages. Great value for the price."
                     </p>
-                    <p class="text-sm font-medium text-gray-900 dark:text-white">Sarah Chen</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">DevOps Engineer</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-primary font-medium text-sm">SC</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Sarah Chen</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">DevOps Engineer</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-800">
+                <div class="card">
                     <div class="flex items-center mb-4">
                         <div class="flex text-yellow-400">
                             @for ($i = 0; $i < 5; $i++)
@@ -424,11 +469,78 @@
                         </div>
                         <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">5/5</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
                         "The best monitoring service out there. Comprehensive, reliable, and the alerts are instant. Been using it for two years now and couldn't be happier."
                     </p>
-                    <p class="text-sm font-medium text-gray-900 dark:text-white">Marcus Thompson</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">Senior Developer</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-primary font-medium text-sm">MT</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">Marcus Thompson</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">Senior Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">Frequently asked questions</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- FAQ 1 -->
+                <div class="card">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">What does Oh Dear monitor?</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Oh Dear monitors uptime from multiple global locations, SSL certificate expiration, broken links, mixed content, DNS changes, scheduled tasks (cron jobs), and application health checks.
+                    </p>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="card">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">How quickly will I be notified?</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Oh Dear sends instant alerts via Slack, Discord, Microsoft Teams, email, SMS, webhooks, PagerDuty, and Opsgenie. Notifications are sent within seconds of detecting an issue.
+                    </p>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="card">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">Is there a free trial?</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Yes, Oh Dear offers a free trial period so you can test all features before committing to a subscription. No credit card is required to start your trial.
+                    </p>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="card">
+                    <div class="card-icon !w-10 !h-10 !mb-4">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-2">What's the refund policy?</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Oh Dear offers a 30-day money-back guarantee. If you're not satisfied with the service, you can request a full refund within 30 days of your purchase.
+                    </p>
                 </div>
             </div>
         </section>
