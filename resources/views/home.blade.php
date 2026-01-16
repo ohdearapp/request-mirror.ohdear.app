@@ -334,6 +334,14 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 <div class="route-link"><a href="/form">/form</a></div>
                                 <div class="route-description">Test form validation and browser automation</div>
                             </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/basic-auth">/basic-auth</a></div>
+                                <div class="route-description">HTTP Basic Auth protected page</div>
+                                <ul class="mt-1 text-xs text-gray-500 dark:text-gray-400 list-['-'] list-inside">
+                                    <li>user: <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">ohdear</code></li>
+                                    <li>pass: <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">best-monitoring-service-ever</code></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -634,6 +642,23 @@ curl -X PATCH {{ url('/anything/users/123') }} \
   "data": "{\"active\": true}",
   "origin": "127.0.0.1"
 }</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Basic Auth -->
+                    <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Test HTTP Basic Authentication</h3>
+                        <div class="bg-gray-900 dark:bg-gray-800 rounded-xl p-6 border border-gray-800">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-xs text-gray-400 font-mono">Command</div>
+                            </div>
+                            <pre class="text-green-400 font-mono text-sm mb-6"><code># Access a page protected by HTTP Basic Auth
+curl -u ohdear:best-monitoring-service-ever {{ url('/basic-auth') }}</code></pre>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="text-xs text-gray-400 font-mono mb-2">Response</div>
+                                <pre class="text-xs text-gray-300 overflow-x-auto"><code># Returns HTML page confirming successful authentication
+# Without credentials, returns 401 Unauthorized</code></pre>
                             </div>
                         </div>
                     </div>

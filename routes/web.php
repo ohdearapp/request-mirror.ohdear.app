@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FormController;
+use App\Http\Middleware\BasicAuth;
 use App\Http\Middleware\NoIndexHeader;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,10 @@ Route::middleware(NoIndexHeader::class)->prefix('examples')->group(function () {
     Route::view('/event', 'examples.event')->name('examples.event');
     Route::view('/contact', 'examples.contact')->name('examples.contact');
 });
+
+Route::view('/basic-auth', 'examples.basic-auth')
+    ->middleware([NoIndexHeader::class, BasicAuth::class])
+    ->name('basic-auth');
 
 Route::get('/sitemap.xml', function () {
     $baseUrl = config('app.url');
