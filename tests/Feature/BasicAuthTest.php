@@ -9,7 +9,7 @@ it('returns 401 without credentials', function () {
 
 it('returns 401 with wrong credentials', function () {
     $response = $this->withHeaders([
-        'Authorization' => 'Basic ' . base64_encode('wrong:credentials'),
+        'Authorization' => 'Basic '.base64_encode('wrong:credentials'),
     ])->get('/basic-auth');
 
     $response->assertUnauthorized();
@@ -17,7 +17,7 @@ it('returns 401 with wrong credentials', function () {
 
 it('returns 200 with correct credentials', function () {
     $response = $this->withHeaders([
-        'Authorization' => 'Basic ' . base64_encode('ohdear:best-monitoring-service-ever'),
+        'Authorization' => 'Basic '.base64_encode('ohdear:best-monitoring-service-ever'),
     ])->get('/basic-auth');
 
     $response->assertOk()
@@ -27,7 +27,7 @@ it('returns 200 with correct credentials', function () {
 
 it('returns noindex header', function () {
     $response = $this->withHeaders([
-        'Authorization' => 'Basic ' . base64_encode('ohdear:best-monitoring-service-ever'),
+        'Authorization' => 'Basic '.base64_encode('ohdear:best-monitoring-service-ever'),
     ])->get('/basic-auth');
 
     $response->assertHeader('X-Robots-Tag', 'noindex, nofollow');
