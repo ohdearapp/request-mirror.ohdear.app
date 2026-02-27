@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CrawlerTestController;
 use App\Http\Controllers\FormController;
 use App\Http\Middleware\BasicAuth;
 use App\Http\Middleware\NoIndexHeader;
@@ -74,3 +75,6 @@ Route::get('/sitemap.xml', function () {
         'Content-Type' => 'application/xml',
     ]);
 })->name('sitemap');
+
+Route::get('/crawler-test', [CrawlerTestController::class, 'index']);
+Route::get('/crawler-test/page-{page}', [CrawlerTestController::class, 'page'])->whereNumber('page');
