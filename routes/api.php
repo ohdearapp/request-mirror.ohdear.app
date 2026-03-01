@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnythingController;
 use App\Http\Controllers\DeleteController;
+use App\Http\Controllers\DenyController;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\GzipController;
 use App\Http\Controllers\HeadersController;
@@ -27,6 +28,7 @@ Route::get('/headers', HeadersController::class);
 Route::get('/ip', IpController::class);
 Route::get('/user-agent', UserAgentController::class);
 Route::get('/gzip', GzipController::class);
+Route::get('/deny', DenyController::class);
 
 Route::any('/status/{codes}', StatusController::class);
 

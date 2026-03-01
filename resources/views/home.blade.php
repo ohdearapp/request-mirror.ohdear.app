@@ -345,14 +345,14 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                         </div>
                     </div>
 
-                    <!-- Latency -->
+                    <!-- Latency & Connectivity -->
                     <div class="card">
                         <div class="card-icon">
                             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h3 class="card-title">Latency</h3>
+                        <h3 class="card-title">Latency & Connectivity</h3>
                         <div class="space-y-4">
                             <div class="py-2">
                                 <div class="route-link"><a href="/latency/200">/latency/{ms}</a></div>
@@ -365,6 +365,10 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                             <div class="py-2">
                                 <div class="route-link"><a href="/latency/random">/latency/random</a></div>
                                 <div class="route-description">Adds a random delay between 0-1000ms</div>
+                            </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/deny?from=192.168.1.1,10.0.0.1">/deny</a></div>
+                                <div class="route-description">Returns 403 if your IP is in the deny list, 200 otherwise (?from=ip1,ip2,...)</div>
                             </div>
                         </div>
                     </div>
