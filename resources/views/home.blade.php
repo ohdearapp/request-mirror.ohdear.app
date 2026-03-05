@@ -370,6 +370,10 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 <div class="route-link"><a href="/deny?from=192.168.1.1,10.0.0.1">/deny</a></div>
                                 <div class="route-description">Returns 403 if your IP is in the deny list, 200 otherwise (?from=ip1,ip2,...)</div>
                             </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/examples/mixed-content">/examples/mixed-content</a></div>
+                                <div class="route-description">HTTPS page that loads CSS, image and JS over HTTP (mixed content)</div>
+                            </div>
                         </div>
                     </div>
                 </div>

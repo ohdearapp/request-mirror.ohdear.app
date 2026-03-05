@@ -45,6 +45,7 @@ Route::middleware(NoIndexHeader::class)->prefix('examples')->group(function () {
     Route::view('/recipe', 'examples.recipe')->name('examples.recipe');
     Route::view('/event', 'examples.event')->name('examples.event');
     Route::view('/contact', 'examples.contact')->name('examples.contact');
+    Route::view('/mixed-content', 'examples.mixed-content')->name('examples.mixed-content');
 });
 
 Route::view('/basic-auth', 'examples.basic-auth')
