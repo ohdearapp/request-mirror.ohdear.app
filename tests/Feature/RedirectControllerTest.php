@@ -114,3 +114,42 @@ it('returns 422 when status is not an integer', function () {
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['status']);
 });
+
+it('rejects javascript: scheme urls', function () {
+    $response = $this->getJson('/redirect-to?url=javascript:alert(1)');
+
+    $response->assertStatus(422);
+    $response->assertJsonValidationErrors(['url']);
+});
+
+it('rejects data: scheme urls', function () {
+    $response = $this->getJson('/redirect-to?url=data:text/html,<script>alert(1)</script>');
+
+    $response->assertStatus(422);
+    $response->assertJsonValidationErrors(['url']);
+});
+
+it('rejects redirects pointing back to its own host', function () {
+    $host = parse_url(config('app.url'), PHP_URL_HOST);
+
+    $response = $this->getJson('/redirect-to?url=http://'.$host.'/some-path');
+
+    $response->assertStatus(422);
+    $response->assertJsonValidationErrors(['url']);
+});
+
+it('rejects same-host redirects regardless of case', function () {
+    $host = parse_url(config('app.url'), PHP_URL_HOST);
+
+    $response = $this->getJson('/redirect-to?url=http://'.strtoupper($host).'/loop');
+
+    $response->assertStatus(422);
+    $response->assertJsonValidationErrors(['url']);
+});
+
+it('sets X-Robots-Tag noindex on the redirect response', function () {
+    $response = $this->get('/redirect-to?url=https://example.com');
+
+    $response->assertStatus(302);
+    expect($response->headers->get('X-Robots-Tag'))->toBe('noindex, nofollow');
+});

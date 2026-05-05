@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -41,10 +42,21 @@ class RedirectController
     public function to(Request $request): RedirectResponse
     {
         $request->validate([
-            'url' => ['required', 'url'],
+            'url' => [
+                'required',
+                'url:http,https',
+                function (string $attribute, mixed $value, Closure $fail) use ($request): void {
+                    $targetHost = is_string($value) ? parse_url($value, PHP_URL_HOST) : null;
+
+                    if (is_string($targetHost) && strcasecmp($targetHost, $request->getHost()) === 0) {
+                        $fail('The url must not point back to this server.');
+                    }
+                },
+            ],
             'status' => ['sometimes', 'integer', 'min:300', 'max:399'],
         ]);
 
-        return redirect($request->query('url'), (int) $request->query('status', 302));
+        return redirect($request->query('url'), (int) $request->query('status', 302))
+            ->withHeaders(['X-Robots-Tag' => 'noindex, nofollow']);
     }
 }
