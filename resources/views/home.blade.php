@@ -282,6 +282,10 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 <div class="route-link"><a href="/redirect/number/3">/redirect/number/{n}</a></div>
                                 <div class="route-description">Redirects N times (302), terminating with a 204 at zero</div>
                             </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/redirect-to?url=https://request-mirror.ohdear.app/get&status=301">/redirect-to</a></div>
+                                <div class="route-description">Single-hop redirect to <code>?url=</code> with optional <code>?status=</code> (300-399, default 302)</div>
+                            </div>
                         </div>
                     </div>
 

@@ -34,6 +34,7 @@ Route::get('/deny', DenyController::class);
 Route::any('/status/{codes}', StatusController::class);
 
 Route::get('/redirect/number/{number}', [RedirectController::class, 'number']);
+Route::get('/redirect-to', [RedirectController::class, 'to']);
 
 Route::get('/latency/random', [LatencyController::class, 'random']);
 Route::get('/latency/between/{min}/and/{max}', [LatencyController::class, 'between']);

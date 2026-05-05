@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -29,5 +30,33 @@ class RedirectController
         }
 
         return redirect(url('/redirect/number/'.($count - 1)), 302);
+    }
+
+    /**
+     * Single-hop redirect to an arbitrary URL with a configurable 3xx status
+     * code. Defaults to 302. Lets callers test client behavior against
+     * specific redirect status codes (301, 302, 303, 307, 308, ...).
+     *
+     * GET /redirect-to?url=https://example.com&status=301
+     */
+    public function to(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'url' => [
+                'required',
+                'url:http,https',
+                function (string $attribute, mixed $value, Closure $fail) use ($request): void {
+                    $targetHost = is_string($value) ? parse_url($value, PHP_URL_HOST) : null;
+
+                    if (is_string($targetHost) && strcasecmp($targetHost, $request->getHost()) === 0) {
+                        $fail('The url must not point back to this server.');
+                    }
+                },
+            ],
+            'status' => ['sometimes', 'integer', 'min:300', 'max:399'],
+        ]);
+
+        return redirect($request->query('url'), (int) $request->query('status', 302))
+            ->withHeaders(['X-Robots-Tag' => 'noindex, nofollow']);
     }
 }
