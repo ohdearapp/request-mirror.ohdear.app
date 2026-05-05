@@ -129,19 +129,37 @@ it('rejects data: scheme urls', function () {
     $response->assertJsonValidationErrors(['url']);
 });
 
-it('rejects redirects pointing back to its own host', function () {
+it('allows same-host redirects to other paths', function () {
     $host = parse_url(config('app.url'), PHP_URL_HOST);
 
-    $response = $this->getJson('/redirect-to?url=http://'.$host.'/some-path');
+    $response = $this->get('/redirect-to?url=http://'.$host.'/get');
+
+    $response->assertStatus(302);
+    $response->assertRedirect('http://'.$host.'/get');
+});
+
+it('rejects redirects that loop back to /redirect-to on the same host', function () {
+    $host = parse_url(config('app.url'), PHP_URL_HOST);
+
+    $response = $this->getJson('/redirect-to?url=http://'.$host.'/redirect-to?url=https://example.com');
 
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['url']);
 });
 
-it('rejects same-host redirects regardless of case', function () {
+it('rejects /redirect-to loop targets regardless of host case', function () {
     $host = parse_url(config('app.url'), PHP_URL_HOST);
 
-    $response = $this->getJson('/redirect-to?url=http://'.strtoupper($host).'/loop');
+    $response = $this->getJson('/redirect-to?url=http://'.strtoupper($host).'/redirect-to?url=https://example.com');
+
+    $response->assertStatus(422);
+    $response->assertJsonValidationErrors(['url']);
+});
+
+it('rejects /redirect-to loop targets with a trailing slash', function () {
+    $host = parse_url(config('app.url'), PHP_URL_HOST);
+
+    $response = $this->getJson('/redirect-to?url=http://'.$host.'/redirect-to/?url=https://example.com');
 
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['url']);

@@ -46,10 +46,18 @@ class RedirectController
                 'required',
                 'url:http,https',
                 function (string $attribute, mixed $value, Closure $fail) use ($request): void {
-                    $targetHost = is_string($value) ? parse_url($value, PHP_URL_HOST) : null;
+                    if (! is_string($value)) {
+                        return;
+                    }
 
-                    if (is_string($targetHost) && strcasecmp($targetHost, $request->getHost()) === 0) {
-                        $fail('The url must not point back to this server.');
+                    $targetHost = parse_url($value, PHP_URL_HOST);
+                    $targetPath = parse_url($value, PHP_URL_PATH);
+
+                    $sameHost = is_string($targetHost) && strcasecmp($targetHost, $request->getHost()) === 0;
+                    $loopsBack = is_string($targetPath) && rtrim($targetPath, '/') === '/redirect-to';
+
+                    if ($sameHost && $loopsBack) {
+                        $fail('The url must not loop back to /redirect-to on this server.');
                     }
                 },
             ],
