@@ -278,6 +278,10 @@ $ curl -X POST {{ url('/post') }} -H "Content-Type: application/json" -d '{"mess
                                 <div class="route-link"><a href="/status/418">/status/{codes}</a></div>
                                 <div class="route-description">Returns given status code or random from list</div>
                             </div>
+                            <div class="py-2">
+                                <div class="route-link"><a href="/redirect/number/3">/redirect/number/{n}</a></div>
+                                <div class="route-description">Redirects N times (302), terminating with a 204 at zero</div>
+                            </div>
                         </div>
                     </div>
 
