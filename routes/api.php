@@ -11,6 +11,7 @@ use App\Http\Controllers\LatencyController;
 use App\Http\Controllers\PatchController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PutController;
+use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserAgentController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::get('/gzip', GzipController::class);
 Route::get('/deny', DenyController::class);
 
 Route::any('/status/{codes}', StatusController::class);
+
+Route::get('/redirect/number/{number}', [RedirectController::class, 'number']);
 
 Route::get('/latency/random', [LatencyController::class, 'random']);
 Route::get('/latency/between/{min}/and/{max}', [LatencyController::class, 'between']);
