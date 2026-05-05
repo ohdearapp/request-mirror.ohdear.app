@@ -30,4 +30,21 @@ class RedirectController
 
         return redirect(url('/redirect/number/'.($count - 1)), 302);
     }
+
+    /**
+     * Single-hop redirect to an arbitrary URL with a configurable 3xx status
+     * code. Defaults to 302. Lets callers test client behavior against
+     * specific redirect status codes (301, 302, 303, 307, 308, ...).
+     *
+     * GET /redirect-to?url=https://example.com&status=301
+     */
+    public function to(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'url' => ['required', 'url'],
+            'status' => ['sometimes', 'integer', 'min:300', 'max:399'],
+        ]);
+
+        return redirect($request->query('url'), (int) $request->query('status', 302));
+    }
 }
