@@ -18,6 +18,6 @@
             @endforeach
         </ul>
     </nav>
-    <script type="application/json" id="request-mirror-data">{!! json_encode($mirrorData, JSON_UNESCAPED_SLASHES) !!}</script>
+    <script type="application/json" id="request-mirror-data">{!! json_encode($mirrorData, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) !!}</script>
 </body>
 </html>
