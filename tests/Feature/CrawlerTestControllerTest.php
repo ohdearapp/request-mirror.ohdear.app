@@ -53,3 +53,22 @@ it('returns 404 for invalid page numbers', function () {
     $this->get('/crawler-test/page-4')->assertNotFound();
     $this->get('/crawler-test/page-0')->assertNotFound();
 });
+
+it('does not let query parameters break out of the mirror data script tag', function () {
+    $payload = '</script><script>alert(document.domain)</script>';
+
+    $response = $this->get('/crawler-test?x='.urlencode($payload));
+
+    $response->assertOk();
+
+    $content = $response->getContent();
+
+    expect($content)->not->toContain('<script>alert(document.domain)</script>');
+    expect(substr_count($content, '</script>'))->toBe(1);
+
+    preg_match('/<script type="application\/json" id="request-mirror-data">(.*?)<\/script>/s', $content, $matches);
+
+    $mirrorData = json_decode($matches[1], true);
+
+    expect($mirrorData['args'])->toHaveKey('x', $payload);
+});
