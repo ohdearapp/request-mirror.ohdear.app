@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\FlareClient\Sampling\RateSampler;
 use Spatie\LaravelFlare\FlareConfig;
 
 return [
@@ -64,12 +65,12 @@ return [
         | Reporting log statements
         |--------------------------------------------------------------------------
         |
-        | If this setting is `false` log statements won't be sent as events to Flare,
-        | no matter which error level you specified in the Flare log channel.
+        | Logs are only sent when a channel using the `flare` driver is part
+        | of the logging stack. Set FLARE_LOG=false to disable log shipping.
         |
         */
 
-    'send_logs_as_events' => true,
+    'log' => env('FLARE_LOG', true),
 
     /*
         |--------------------------------------------------------------------------
@@ -136,7 +137,7 @@ return [
         |
         */
     'sampler' => [
-        'class' => \Spatie\FlareClient\Sampling\RateSampler::class,
+        'class' => RateSampler::class,
         'config' => [
             'rate' => 0.1,
         ],
