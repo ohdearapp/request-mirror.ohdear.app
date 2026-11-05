@@ -54,12 +54,16 @@
                             Blog
                         </a>
                         <span class="text-gray-400">•</span>
+                        <a href="https://ohdear.app/tools" target="_blank" class="text-primary hover:text-primary font-medium">
+                            Tools
+                        </a>
+                        <span class="text-gray-400">•</span>
                         <a href="https://github.com/ohdearapp" target="_blank" class="text-primary hover:text-primary font-medium">
                             GitHub
                         </a>
                     </div>
                     <p class="text-xs text-gray-500 dark:text-gray-600 mt-4">
-                        Need comprehensive website monitoring? Check out Oh Dear for uptime monitoring, SSL certificate monitoring, and much more.
+                        Need comprehensive website monitoring? Check out Oh Dear for <a href="https://ohdear.app/features/website-uptime-monitoring" target="_blank" class="underline hover:text-primary">uptime monitoring</a>, <a href="https://ohdear.app/features/continuous-certificate-monitoring" target="_blank" class="underline hover:text-primary">SSL certificate monitoring</a>, and much more.
                     </p>
                 </div>
             </div>
