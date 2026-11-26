@@ -30,10 +30,6 @@
 }
 
 request-mirror.ohdear.app {
-	# The certificate Forge issued, copied from /etc/nginx/ssl/request-mirror.ohdear.app/2855772/.
-	# It is only used for the switch from nginx. The next step lets Caddy manage it.
-	tls /etc/caddy/certs/request-mirror.ohdear.app.crt /etc/caddy/certs/request-mirror.ohdear.app.key
-
 	root * /home/forge/request-mirror.ohdear.app/current/public
 	import security_headers
 
