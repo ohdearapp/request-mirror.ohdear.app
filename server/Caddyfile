@@ -6,6 +6,10 @@
 	# OCSP stapling is off because some test certificates below are expired or self-signed on purpose.
 	ocsp_stapling off
 
+	# A TLS client that asks for a host name with no certificate of its own gets this certificate.
+	# That is how wrong-host.request-mirror.ohdear.app serves a valid certificate for another name.
+	fallback_sni request-mirror.ohdear.app
+
 	servers {
 		# Cloudflare sits in front of request-mirror.ohdear.app. These are Cloudflare's IP ranges.
 		# Caddy only trusts the X-Forwarded-For header when the request comes from one of them,
@@ -66,6 +70,45 @@ request-mirror.ohdear.app {
 			roll_keep 5
 		}
 	}
+}
+
+# Test hosts for Oh Dear's certificate health tests. Each one serves a broken certificate on purpose.
+# server/certs/generate.sh made these certificates. See server/README.md.
+(tls_test_host) {
+	import security_headers
+	respond "This host serves a broken certificate on purpose. Oh Dear's certificate health tests connect to it." 200
+}
+
+self-signed.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/self-signed.crt /etc/caddy/certs/self-signed.key
+	import tls_test_host
+}
+
+untrusted-root.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/untrusted-root.crt /etc/caddy/certs/untrusted-root.key
+	import tls_test_host
+}
+
+sha1-intermediate.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/sha1-intermediate.crt /etc/caddy/certs/sha1-intermediate.key
+	import tls_test_host
+}
+
+# Host names without a site of their own end up here, with the request-mirror.ohdear.app certificate (fallback_sni above).
+# wrong-host.request-mirror.ohdear.app is the only one that should, so every other name gets the connection closed.
+https:// {
+	@wrong_host host wrong-host.request-mirror.ohdear.app
+	handle @wrong_host {
+		import tls_test_host
+	}
+	handle {
+		abort
+	}
+}
+
+# Oh Dear's ports test expects port 9999 to be open on ports.request-mirror.ohdear.app.
+http://:9999 {
+	respond "Port 9999 is open for Oh Dear's ports test." 200
 }
 
 # nginx answered plain HTTP with a 301 to HTTPS. Caddy's own redirect is a 308, so this block keeps the 301.

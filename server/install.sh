@@ -53,6 +53,9 @@ install -m 644 "$here/Caddyfile" /etc/caddy/Caddyfile
 # Validate as the caddy user. Run as root, it would create the log files owned by root, and Caddy could not write to them.
 sudo -u caddy caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 
+# Oh Dear's ports test expects port 9999 to be open.
+ufw allow 9999/tcp >/dev/null
+
 # Forge renewed the certificate with this weekly cron. Caddy renews it now.
 # The Forge script also restarts nginx, which must stay stopped once Caddy serves the site.
 rm -f /etc/cron.d/letsencrypt-renew-*
