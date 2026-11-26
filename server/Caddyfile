@@ -3,6 +3,11 @@
 # Do not edit the copy on the server. Change this file and run install.sh again.
 {
 	# Caddy keeps the Let's Encrypt certificate for request-mirror.ohdear.app up to date.
+	# It must not get certificates for any other name: the test hosts below serve certificates that are
+	# broken on purpose, and a fresh certificate for their name would replace the broken one.
+	# So automatic certificates are off, and request-mirror.ohdear.app is named here to be managed anyway.
+	auto_https disable_certs
+	tls_automate_names request-mirror.ohdear.app
 	# OCSP stapling is off because some test certificates below are expired or self-signed on purpose.
 	ocsp_stapling off
 
