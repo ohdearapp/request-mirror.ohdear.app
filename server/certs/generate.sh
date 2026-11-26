@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 # Generates the broken test certificates that Oh Dear's certificate health tests connect to.
-# The files it writes are committed. Run it again only to replace them all.
+# install.sh runs it on the server and writes the files to /etc/caddy/certs.
+# The private keys stay on the server. This repository is public, so they are never committed.
+# It does nothing when the certificates already exist. Delete them first to make new ones.
 #
 # Every certificate is valid for 10 years, so nobody has to renew them.
 # The checker also reports "valid for too long" for them. The tests only look for the issue they are about.
 set -euo pipefail
 
-cd "$(dirname "$0")"
+out="${1:?Usage: generate.sh <output directory>}"
+cd "$out"
+
+if [ -f self-signed.crt ] && [ -f untrusted-root.crt ] && [ -f sha1-intermediate.crt ]; then
+    exit 0
+fi
 
 domain=request-mirror.ohdear.app
 days=3650

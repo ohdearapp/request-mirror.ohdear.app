@@ -26,14 +26,14 @@ All of them are DNS only in Cloudflare (grey cloud), so the TLS connection reach
 | `untrusted-root.request-mirror.ohdear.app` | Signed by a root no browser trusts | `certs/generate.sh` |
 | `sha1-intermediate.request-mirror.ohdear.app` | Intermediate signed with SHA-1 | `certs/generate.sh` |
 
-`ports.request-mirror.ohdear.app` is the target of Oh Dear's ports test. It expects ports 80, 443 and 9999 to be open and port 23 to be closed.
+`ports.request-mirror.ohdear.app` is the target of Oh Dear's ports test. It expects ports 22, 80, 443 and 9999 to be open and port 23 to be closed.
 
-The certificates from `certs/generate.sh` are test material. Their private keys are committed on purpose.
+`install.sh` runs `certs/generate.sh` on the server, so the private keys of these certificates never enter this public repository.
 nginx cannot serve the SHA-1 chain: OpenSSL refuses to load it with "ca md too weak". That is one reason this server runs Caddy.
 
 ## What is not in this repository
 
-Private keys of real certificates are copied to `/etc/caddy/certs/` by hand. They are never committed.
+No private key is in this repository. The expired certificate and its key are copied to `/etc/caddy/certs/` by hand. The other test certificates are generated on the server.
 
 ## Rolling back to nginx
 

@@ -78,14 +78,14 @@ request-mirror.ohdear.app {
 }
 
 # Test hosts for Oh Dear's certificate health tests. Each one serves a broken certificate on purpose.
-# server/certs/generate.sh made these certificates. See server/README.md.
+# install.sh runs server/certs/generate.sh, which makes these certificates on the server. See server/README.md.
 (tls_test_host) {
 	import security_headers
 	respond "This host serves a broken certificate on purpose. Oh Dear's certificate health tests connect to it." 200
 }
 
 # A publicly trusted certificate for ohdear.app that expired on 2026-11-18. Nothing renews it.
-# The certificate and its key were copied by hand from dispatcher02 to /etc/caddy/certs/. They are not in this repository.
+# The certificate and its key were copied to /etc/caddy/certs/ by hand. They are not in this repository.
 expired.request-mirror.ohdear.app {
 	tls /etc/caddy/certs/expired.crt /etc/caddy/certs/expired.key
 	import tls_test_host

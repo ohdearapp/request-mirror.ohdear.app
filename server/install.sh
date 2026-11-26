@@ -42,12 +42,9 @@ fi
 install -d -o caddy -g caddy -m 755 /var/log/caddy
 install -d -o root -g caddy -m 750 /etc/caddy/certs
 
-# Copy the committed test certificates. Files that are not in the repository stay in place,
-# because the private keys of real certificates are copied to /etc/caddy/certs by hand.
-find "$here/certs" -maxdepth 1 -type f \( -name '*.crt' -o -name '*.key' \) -print0 |
-    while IFS= read -r -d '' file; do
-        install -o root -g caddy -m 640 "$file" "/etc/caddy/certs/$(basename "$file")"
-    done
+"$here/certs/generate.sh" /etc/caddy/certs
+chown root:caddy /etc/caddy/certs/*.crt /etc/caddy/certs/*.key
+chmod 640 /etc/caddy/certs/*.crt /etc/caddy/certs/*.key
 
 install -m 644 "$here/Caddyfile" /etc/caddy/Caddyfile
 # Validate as the caddy user. Run as root, it would create the log files owned by root, and Caddy could not write to them.
