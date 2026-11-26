@@ -1,0 +1,134 @@
+# Caddy configuration for the request-mirror.ohdear.app server.
+# server/install.sh copies this file to /etc/caddy/Caddyfile.
+# Do not edit the copy on the server. Change this file and run install.sh again.
+{
+	# Caddy keeps the Let's Encrypt certificate for request-mirror.ohdear.app up to date.
+	# It must not get certificates for any other name: the test hosts below serve certificates that are
+	# broken on purpose, and a fresh certificate for their name would replace the broken one.
+	# So automatic certificates are off, and request-mirror.ohdear.app is named here to be managed anyway.
+	auto_https disable_certs
+	tls_automate_names request-mirror.ohdear.app
+	# OCSP stapling is off because some test certificates below are expired or self-signed on purpose.
+	ocsp_stapling off
+
+	# A TLS client that asks for a host name with no certificate of its own gets this certificate.
+	# That is how wrong-host.request-mirror.ohdear.app serves a valid certificate for another name.
+	fallback_sni request-mirror.ohdear.app
+
+	servers {
+		# Cloudflare sits in front of request-mirror.ohdear.app. These are Cloudflare's IP ranges.
+		# Caddy only trusts the X-Forwarded-For header when the request comes from one of them,
+		# so the app sees the visitor's own IP address and not Cloudflare's.
+		trusted_proxies static 173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22 2400:cb00::/32 2606:4700::/32 2803:f800::/32 2405:b500::/32 2405:8100::/32 2a06:98c0::/29 2c0f:f248::/32
+		client_ip_headers X-Forwarded-For
+		trusted_proxies_strict
+
+		# HTTP/3 needs UDP port 443, which the firewall does not open.
+		protocols h1 h2
+	}
+}
+
+(security_headers) {
+	header {
+		X-Frame-Options "SAMEORIGIN"
+		X-XSS-Protection "1; mode=block"
+		X-Content-Type-Options "nosniff"
+		-Server
+		-Via
+	}
+}
+
+request-mirror.ohdear.app {
+	root * /home/forge/request-mirror.ohdear.app/current/public
+	import security_headers
+
+	# nginx refused request bodies over 1 MB. Keep the same limit.
+	request_body {
+		max_size 1MB
+	}
+
+	encode gzip
+
+	# Hide files such as .env. Paths under /.well-known stay reachable.
+	@dotfiles {
+		path_regexp /\.
+		not path_regexp ^/\.well-known/
+	}
+	respond @dotfiles 403
+
+	# Caddy adds Via and X-Forwarded-* headers when it hands a request to PHP.
+	# This app shows visitors the headers they sent, so pass the original values on unchanged.
+	# Caddy also passes Cloudflare's address as REMOTE_ADDR. The app reads REMOTE_ADDR for /ip,
+	# so pass the visitor's address instead.
+	php_fastcgi unix//run/php/php8.4-fpm.sock {
+		env REMOTE_ADDR {client_ip}
+		header_up -Via
+		header_up -X-Forwarded-Host
+		header_up X-Forwarded-For {http.request.header.X-Forwarded-For}
+		header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
+	}
+	file_server
+
+	log {
+		output file /var/log/caddy/request-mirror.ohdear.app.access.log {
+			roll_size 50MiB
+			roll_keep 5
+		}
+	}
+}
+
+# Test hosts for Oh Dear's certificate health tests. Each one serves a broken certificate on purpose.
+# install.sh runs server/certs/generate.sh, which makes these certificates on the server. See server/README.md.
+(tls_test_host) {
+	import security_headers
+	respond "This host serves a broken certificate on purpose. Oh Dear's certificate health tests connect to it." 200
+}
+
+# A publicly trusted certificate for ohdear.app that expired on 2026-11-18. Nothing renews it.
+# The certificate and its key were copied to /etc/caddy/certs/ by hand. They are not in this repository.
+expired.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/expired.crt /etc/caddy/certs/expired.key
+	import tls_test_host
+}
+
+self-signed.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/self-signed.crt /etc/caddy/certs/self-signed.key
+	import tls_test_host
+}
+
+untrusted-root.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/untrusted-root.crt /etc/caddy/certs/untrusted-root.key
+	import tls_test_host
+}
+
+sha1-intermediate.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/sha1-intermediate.crt /etc/caddy/certs/sha1-intermediate.key
+	import tls_test_host
+}
+
+# Host names without a site of their own end up here, with the request-mirror.ohdear.app certificate (fallback_sni above).
+# wrong-host.request-mirror.ohdear.app is the only one that should, so every other name gets the connection closed.
+https:// {
+	@wrong_host host wrong-host.request-mirror.ohdear.app
+	handle @wrong_host {
+		import tls_test_host
+	}
+	handle {
+		abort
+	}
+}
+
+# Oh Dear's ports test expects port 9999 to be open on ports.request-mirror.ohdear.app.
+http://:9999 {
+	respond "Port 9999 is open for Oh Dear's ports test." 200
+}
+
+# nginx answered plain HTTP with a 301 to HTTPS. Caddy's own redirect is a 308, so this block keeps the 301.
+http://request-mirror.ohdear.app {
+	redir https://{host}{uri} 301
+}
+
+# Any other host name over plain HTTP gets the connection closed, as nginx's catch-all did.
+http:// {
+	abort
+}

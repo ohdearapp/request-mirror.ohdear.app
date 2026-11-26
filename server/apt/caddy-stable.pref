@@ -1,0 +1,5 @@
+# Take Caddy from Caddy's own repository, not from Ubuntu.
+# Ubuntu 24.04 ships Caddy 2.6, which is too old for this configuration.
+Package: caddy
+Pin: origin dl.cloudsmith.io
+Pin-Priority: 1001
