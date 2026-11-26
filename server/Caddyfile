@@ -79,6 +79,13 @@ request-mirror.ohdear.app {
 	respond "This host serves a broken certificate on purpose. Oh Dear's certificate health tests connect to it." 200
 }
 
+# A publicly trusted certificate for ohdear.app that expired on 2026-11-18. Nothing renews it.
+# The certificate and its key were copied by hand from dispatcher02 to /etc/caddy/certs/. They are not in this repository.
+expired.request-mirror.ohdear.app {
+	tls /etc/caddy/certs/expired.crt /etc/caddy/certs/expired.key
+	import tls_test_host
+}
+
 self-signed.request-mirror.ohdear.app {
 	tls /etc/caddy/certs/self-signed.crt /etc/caddy/certs/self-signed.key
 	import tls_test_host
